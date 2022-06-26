@@ -5,7 +5,6 @@ import ApiError from "../error/ApiError";
  */
 const responseFilter = () => {
   return async (ctx, next) => {
-    console.log(ctx.status)
     try {
       await next();
       responseFormatter(ctx)
