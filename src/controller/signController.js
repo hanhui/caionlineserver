@@ -13,12 +13,13 @@ class SignController {
       email: ctx.query.email,
       password: ctx.query.password
     }
-    let sign = await Sign.find(signToken)
+    let sign = await Sign.findOne(signToken)
+    console.log('sign',sign)
     if (sign) {
       //token签名 有效期为3小时
       const token = jwt.sign(signToken, jwtConfig.secret, { expiresIn: '3h' })
       ctx.body = {
-        token
+        token,sign
       }
     } else {
       throw new ApiError(ApiErrorNames.UserNotExist);
@@ -28,12 +29,12 @@ class SignController {
     console.log(ctx.request.body)
     let { email, password, firstName, lastName } = ctx.request.body;
     const sign = new Sign({ email, password, firstName, lastName });
-    let rtn =await sign.save()
-      let dbmsg = '注册成功'
-      ctx.body = {
-        dbmsg
-      }
-      console.log('rtn',rtn)    
+    let rtn = await sign.save()
+    let dbmsg = '注册成功'
+    ctx.body = {
+      dbmsg
+    }
+    console.log('rtn', rtn)
   }
   static async test(ctx) {
     ctx.body = 'token available'

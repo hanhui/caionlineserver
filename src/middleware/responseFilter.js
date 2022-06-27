@@ -5,8 +5,10 @@ import ApiError from "../error/ApiError";
  */
 const responseFilter = () => {
   return async (ctx, next) => {
+    console.log(ctx.body)
     try {
       await next();
+      console.log(ctx.body)
       responseFormatter(ctx)
     } catch (error) {
       // 如果异常类型是自定义API异常

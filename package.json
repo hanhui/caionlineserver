@@ -25,7 +25,8 @@
     "koa-static": "^5.0.0",
     "koa-views": "^8.0.0",
     "mongoose": "^6.4.0",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

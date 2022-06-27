@@ -2,9 +2,7 @@ import * as jwt from "jsonwebtoken";
 import { jwtConfig } from "../config/index";
 
 export default async (ctx, next) => {
-  // console.log('token:', ctx.get('token'))
-  const token = ctx.get('token');
-
+  const token = ctx.get('Authorization');
   if (token === '') {
     ctx.throw(401, 'no token detected in http header \'token\'');
   }
